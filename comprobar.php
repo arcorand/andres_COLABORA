@@ -37,16 +37,14 @@ echo "ERROR: Imposible realizar consulta.<br>\n";
 echo "Consulta realizada satisfactoriamente!<br>\n"; 
 } 
 // Mostraremos todos sus registros en una tabla html... echo "Se encontraron ".mysqli_num_rows($resul)." registros.<br>"; if (mysqli_num_rows($resul) == 0) {echo "<br><b>Usuario y/o clave incorrectos!.<br></b>\n";} 
-else 
-{ 
+
 echo "<br>REGISTROS ENCONTRADOS:<br>\n"; 
-// Sacaremos registro a registro los datos de la 
-tabla. 
+// Sacaremos registro a registro los datos de la tabla. 
 while ($fila = mysqli_fetch_row($resul)){ 
 echo 
 "<b>USUARIO:</b>$fila[0]<b>CLAVE:</b>$fila[1]<b>NOMBRE:</b>$fila[2]<b>H AS CONSEGUIDO ENTRAR EN LA PAGINA WEB!</b><br>"; 
 } 
-} 
+
 mysqli_close($conexion); 
 ?> 
 <form action="altas.html" method="post">
@@ -55,4 +53,3 @@ mysqli_close($conexion);
 
 </body> 
 
-</html> 
