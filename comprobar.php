@@ -3,19 +3,14 @@
 </head> 
 <body> 
 <?php 
-$usuario= $_POST["usu"]; 
-#Sanatización de parámetros para evitar las inyecciones SQL: quitan caracteres especiales como la comilla simple, etc (SOLO FUNCIONAN HASTA PHP 5!). 
-#$usuario = stripslashes($usuario); 
-#echo "Usuario sanatizado despues del primer filtro: 
-$usuario<br><br>\n"; 
-#$usuario = mysql_real_escape_string($usuario); 
-#echo "Usuario sanatizado despues del segundo filtro: 
-$usuario<br><br>\n"; 
-$clave= $_POST["clave"]; 
-#echo "Consulta a ejecutar: SELECT * FROM acceso where login='$usuario' AND clave=md5('$clave')<br><br>\n"; 
-#Sanatización de parámetros para evitar las inyecciones SQL: quitan caracteres especiales como la comilla simple, etc (SOLO FUNCIONAN HASTA PHP 5!). 
-#$clave = stripslashes($clave); 
-#$clave = mysql_real_escape_string($clave); 
+$usuario= $_POST["usu"];
+$usuario=preg_replace('([^A-Za-z0-9])','',$usuario);
+echo "Usuario sanitizado despues del primer filtro: $usuario<br><br>\n";
+#$usuario = mysql_real_escape_string($usuario);
+#echo "Usuario sanitizado despues del segundo filtro: $usuario<br><br>\n";
+$clave= $_POST["clave"];
+#$clave = stripslashes($clave);
+#$clave = mysql_real_escape_string($clave);
 //Conecta con el servidor (en versiones anteriores la clave de root era ""): 
 $conexion=mysqli_connect("localhost","root",""); if (!$conexion){ 
 echo "ERROR: Imposible establecer conexión con la base de datos para ese usuario y esa clave.<br>\n"; 
