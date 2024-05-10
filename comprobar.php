@@ -54,5 +54,10 @@ echo
 } 
 mysqli_close($conexion); 
 ?> 
+<form action="altas.html" method="post">
+	<input type="submit" name="altas" value="Dar de Alta">
+</form>
+
 </body> 
+
 </html> 
